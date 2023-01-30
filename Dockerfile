@@ -15,7 +15,7 @@ RUN apt-get update \
         zlib1g-dev \
     && rm -rf /var/lib/apt/lists/* \
     && docker-php-ext-configure gd --with-freetype=/usr --with-jpeg=/usr \
-    && docker-php-ext-install -j$(nproc) gd pdo pdo_mysql mbstring mysqli zip intl \
+    && docker-php-ext-install -j$(nproc) gd pdo_mysql mbstring zip intl \
     && pecl install redis \
     && docker-php-ext-enable redis
 
