@@ -194,7 +194,6 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-
     ],
 
     /*
@@ -212,4 +211,16 @@ return [
         // 'ExampleClass' => App\Example\ExampleClass::class,
     ])->toArray(),
 
+    /*
+    |--------------------------------------------------------------------------
+    | Custom Configuration
+    |--------------------------------------------------------------------------
+    |
+    | This array of custom configuration will be registered when this
+    | application is started. However, feel free to register as many as you
+    | wish as the aliases are "lazy" loaded so they don't hinder performance.
+    |
+    */
+
+    'jwt_secret' => env('JWT_SECRET', 'secret-key'),
 ];
