@@ -16,5 +16,14 @@ return [
     'failed' => 'These credentials do not match our records.',
     'password' => 'The provided password is incorrect.',
     'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
-
+    'register' => [
+        'success' => 'Successfully created user! Please login to continue',
+        'failed' => 'Failed to create user, email already exists',
+        'error' => 'Error creating user. Please try again'
+    ],
+    'token' => [
+        'success' => 'Successfully generated token',
+        'failed' => 'Incorrect email or password',
+        'error' => 'Error generating token. Please try again',
+    ],
 ];
