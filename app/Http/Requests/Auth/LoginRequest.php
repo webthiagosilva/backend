@@ -3,9 +3,9 @@
 namespace App\Http\Requests\Auth;
 
 use Illuminate\Foundation\Http\FormRequest;
-use App\Rules\UserLoginCredentialsRule;
+use App\Rules\LoginCredentialsRule;
 
-class UserLoginRequest extends FormRequest
+class LoginRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -26,7 +26,7 @@ class UserLoginRequest extends FormRequest
     {
         return [
             'email' => ['required', 'string', 'email', 'max:255', 'exists:users,email'],
-            'password' => ['required', 'string', 'min:8', 'max:12', new UserLoginCredentialsRule],
+            'password' => ['required', 'string', 'min:8', 'max:12', new LoginCredentialsRule],
         ];
     }
 }

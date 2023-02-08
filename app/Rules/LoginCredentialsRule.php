@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
-class UserLoginCredentialsRule implements Rule
+class LoginCredentialsRule implements Rule
 {
     /**
      * Create a new rule instance.
@@ -43,6 +43,6 @@ class UserLoginCredentialsRule implements Rule
      */
     public function message()
     {
-        return __('auth.token.failed');
+        return __('auth.login.failed');
     }
 }

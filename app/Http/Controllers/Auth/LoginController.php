@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\UserLoginRequest;
+use App\Http\Requests\Auth\LoginRequest;
 use Carbon\Carbon;
 use Symfony\Component\HttpFoundation\Response;
 use Illuminate\Support\Facades\Auth;
@@ -19,10 +19,10 @@ class LoginController extends Controller
      *
      * @responseFile responses/login.post.json
      *
-     * @param  \App\Http\Requests\Auth\UserLoginRequest  $request
+     * @param  \App\Http\Requests\Auth\LoginRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(UserLoginRequest $request)
+    public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
@@ -41,7 +41,7 @@ class LoginController extends Controller
 
         return response()->json([
             'success' => true,
-            'message' => __('auth.token.success'),
+            'message' => __('auth.login.success'),
             'data' => [
                 'access_token' => $token->plainTextToken,
                 'token_type' => 'Bearer',
