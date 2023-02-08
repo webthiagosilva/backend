@@ -1,0 +1,8 @@
+{
+    "success": true,
+    "message": "Successfully logged in!",
+    "data": {
+        "token": "01|QxcpweklLy2mfCHImb1I0LNgVXOn0qGEeFzekefc",
+        "token_type": "Bearer"
+    }
+}
