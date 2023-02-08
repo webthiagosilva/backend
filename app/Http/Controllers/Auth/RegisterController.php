@@ -4,15 +4,22 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\UserRegisterRequest;
-use App\Http\Requests\Auth\UserTokenRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
+
 
 class RegisterController extends Controller
 {
     /**
      * Register a new user.
+     *
+     * @bodyParam name string required The name of the user.
+     * @bodyParam email string required The email of the user.
+     * @bodyParam password string required The password of the user.
+     * @bodyParam password_confirmation string required The password confirmation of the user.
+     *
+     * @responseFile responses/register.post.json
      *
      * @param  \App\Http\Requests\Auth\UserRegisterRequest  $request
      * @return \Illuminate\Http\JsonResponse
@@ -21,39 +28,17 @@ class RegisterController extends Controller
     {
         $data = $request->validated();
 
-        try {
-            User::query()->create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-            ]);
-        } catch (\Exception $e) {
-            return response()->json([
-                'success' => false,
-                'message' => __('auth.register.error'),
-            ], Response::HTTP_INTERNAL_SERVER_ERROR);
-        }
+        $user = new User();
+
+        $user->name = $data['name'];
+        $user->email = $data['email'];
+        $user->password = Hash::make($data['password']);
+
+        $user->save();
 
         return response()->json([
             'success' => true,
             'message' => __('auth.register.success'),
         ], Response::HTTP_CREATED);
-    }
-
-    public function token(UserTokenRequest $request)
-    {
-        $data = $request->validated();
-
-        $user = User::where('email', $data['email'])->first();
-        $token = $user->createToken('auth_token');
-
-        return response()->json([
-            'success' => true,
-            'message' => __('auth.token.success'),
-            'data' => [
-                'access_token' => $token,
-                'token_type' => 'Bearer',
-            ],
-        ], Response::HTTP_OK);
     }
 }
