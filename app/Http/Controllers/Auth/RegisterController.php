@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\UserRegisterRequest;
+use App\Http\Requests\Auth\RegisterRequest;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,10 +21,10 @@ class RegisterController extends Controller
      *
      * @responseFile responses/register.post.json
      *
-     * @param  \App\Http\Requests\Auth\UserRegisterRequest  $request
+     * @param  \App\Http\Requests\Auth\RegisterRequest  $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function register(UserRegisterRequest $request)
+    public function register(RegisterRequest $request)
     {
         $data = $request->validated();
 
