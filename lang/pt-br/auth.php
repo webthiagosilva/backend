@@ -20,9 +20,12 @@
             'failed' => 'Falha ao criar usuário, e-mail já existe',
             'error' => 'Erro ao criar usuário. Por favor, tente novamente'
         ],
-        'token' => [
-            'success' => 'Token gerado com sucesso',
+        'login' => [
+            'success' => 'Login realizado com sucesso!',
             'failed' => 'E-mail ou senha incorretos',
-            'error' => 'Erro ao gerar token. Por favor, tente novamente'
+            'error' => 'Erro ao realizar login. Por favor, tente novamente'
+        ],
+        'logout' => [
+            'success' => 'Usuário deslogado com sucesso',
         ],
     ];

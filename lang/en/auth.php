@@ -21,9 +21,12 @@ return [
         'failed' => 'Failed to create user, email already exists',
         'error' => 'Error creating user. Please try again'
     ],
-    'token' => [
-        'success' => 'Successfully generated token',
+    'login' => [
+        'success' => 'Successfully logged in!',
         'failed' => 'Incorrect email or password',
-        'error' => 'Error generating token. Please try again',
+        'error' => 'Error logging in. Please try again',
+    ],
+    'logout' => [
+        'success' => 'User logged out successfully',
     ],
 ];
