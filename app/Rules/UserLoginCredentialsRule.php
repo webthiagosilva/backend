@@ -6,7 +6,7 @@ use App\Models\User;
 use Illuminate\Contracts\Validation\Rule;
 use Illuminate\Support\Facades\Hash;
 
-class UserTokenCredentialsRule implements Rule
+class UserLoginCredentialsRule implements Rule
 {
     /**
      * Create a new rule instance.
