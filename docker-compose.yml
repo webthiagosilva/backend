@@ -1,0 +1,36 @@
+version: '3.9'
+
+networks:
+    backend:
+
+services:
+
+    app:
+        container_name: backend
+        restart: unless-stopped
+        build:
+            context: .
+        working_dir: /var/www/html/backend
+        volumes:
+            - "./:/var/www/html/backend"
+        ports:
+            - "8000:80"
+        depends_on:
+            - db
+        networks:
+            - backend
+
+    db:
+        image: mysql:8.0
+        container_name: mysql
+        restart: unless-stopped
+        environment:
+            MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+        ports:
+            - "3306:3306"
+        networks:
+            - backend
+        command: --default-authentication-plugin=mysql_native_password
